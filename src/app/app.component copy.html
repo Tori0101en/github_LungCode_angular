@@ -1,0 +1,116 @@
+<app-header />
+
+
+
+
+
+
+<div class="container">
+  <h1 [class.active]="isAcive" *ngIf="isAcive">{{title}}</h1>
+  <input type="text" class="form-control" [(ngModel)]="title">
+  <input type="checkbox" [(ngModel)]="isAcive">
+
+
+
+
+  <div [ngSwitch]="errorCode">
+    <div class="jumbotron" *ngSwitchCase="403">
+      <div class="container">
+        <h1>403 Forbidden</h1>
+        <p>Contents ...</p>
+        <p>
+          <a class="btn btn-primary btn-lg">Learn more</a>
+        </p>
+      </div>
+    </div>
+
+
+
+
+    <div class="jumbotron"  *ngSwitchCase="404">
+      <div class="container">
+        <h1>404 Not Found</h1>
+        <p>Contents ...</p>
+        <p>
+          <a class="btn btn-primary btn-lg">Learn more</a>
+        </p>
+      </div>
+    </div>
+
+
+
+
+    <div class="jumbotron"  *ngSwitchCase="405">
+      <div class="container">
+        <h1>405 Method Not Allow</h1>
+        <p>Contents ...</p>
+        <p>
+          <a class="btn btn-primary btn-lg">Learn more</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- <img [src]="img_link" alt=""> -->
+  <!-- <button (click)="sayHello()">Click</button> -->
+  <p [innerHTML]="content">
+  </p>
+
+</div>
+
+<h2>Sinh viên</h2>
+<hr>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>STT</th>
+      <th>Họ Tên</th>
+      <th>Hình ảnh</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let std of students; let index = index">
+      <td>{{index +1}}</td>
+      <td>{{std.name}}</td>
+      <td>
+        <img [src]="std.image" alt="" width="60">
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h2>Sản phẩm</h2>
+
+<hr>
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>STT</th>
+      <th>Name</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of products; let idx = index">
+      <td>{{idx+1}}</td>
+      <td>{{p.name}}</td>
+      <td>{{p.price | currency:" "}} VND</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<hr>
+
+
+
+<app-footer />
